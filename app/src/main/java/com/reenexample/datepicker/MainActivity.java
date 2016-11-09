@@ -1,24 +1,6 @@
 package com.reenexample.datepicker;
 
-import android.app.AlertDialog;
-import android.app.DatePickerDialog;
-import android.app.Dialog;
-import android.app.DialogFragment;
-import android.app.TimePickerDialog;
-import android.content.Context;
-import android.database.Cursor;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.RectF;
-import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.LinearLayoutManager;
+
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.support.v7.widget.helper.ItemTouchHelper;
@@ -35,6 +17,25 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.RectF;
+import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.app.AlertDialog;
+import android.app.DatePickerDialog;
+import android.app.Dialog;
+import android.app.DialogFragment;
+import android.app.TimePickerDialog;
+import android.content.Context;
+import android.database.Cursor;
+import android.support.design.widget.Snackbar;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
 
 import com.github.brnunes.swipeablerecyclerview.SwipeableRecyclerViewTouchListener;
 
@@ -68,72 +69,19 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-
                showDialog();
-
-
             }
         });
-
-
         rv = (RecyclerView) findViewById(R.id.mRecycler);
-        //SET PROPS
         rv.setLayoutManager(new LinearLayoutManager(this));
         rv.setItemAnimator(new DefaultItemAnimator());
-        //ADAPTER
         adapter = new MyAdapter(this, newtodos);
-        initSwipe();
-
-
-        //RETRIEVE
+        initSwipe()
         retrieve();
-
-        /*SwipeableRecyclerViewTouchListener swipeTouchListener =
-                new SwipeableRecyclerViewTouchListener(rv,
-                        new SwipeableRecyclerViewTouchListener.SwipeListener() {
-                            @Override
-                            public boolean canSwipeLeft(int position) {
-                                return true;
-                            }
-
-                            @Override
-                            public boolean canSwipeRight(int position) {
-                                return true;
-                            }
-
-                            @Override
-                            public void onDismissedBySwipeLeft(RecyclerView recyclerView, int[] reverseSortedPositions) {
-
-
-                                for (int position : reverseSortedPositions) {
-                                    newtodos.remove(position);
-                                    adapter.notifyItemRemoved(position);
-                                }
-                                adapter.notifyDataSetChanged();
-                            }
-
-                            @Override
-                            public void onDismissedBySwipeRight(RecyclerView recyclerView, int[] reverseSortedPositions) {
-                                for (int position : reverseSortedPositions) {
-                                    newtodos.remove(position);
-                                    adapter.notifyItemRemoved(position);
-                                }
-                                adapter.notifyDataSetChanged();
-                            }
-                        });
-
-        rv.addOnItemTouchListener(swipeTouchListener);*/
-
-
-
     }
 
     private void showDialog(){
@@ -156,10 +104,6 @@ public class MainActivity extends AppCompatActivity {
 
         calandarImage.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                        /*DialogFragment dialogfragment = new DatePickerDialogClass();
-
-                        dialogfragment.show(getFragmentManager(), "Date Picker Dialog");*/
-
                 DialogFragment newFragment = new DatePickerDialogClass() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int day) {
@@ -169,8 +113,6 @@ public class MainActivity extends AppCompatActivity {
                 newFragment.show(getFragmentManager(), "datePicker");
             }
         });
-
-
         clockImage = (ImageView) dialog.findViewById(R.id.clockImage);
         clockImage.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -178,7 +120,6 @@ public class MainActivity extends AppCompatActivity {
                     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
                         time.setText(hourOfDay + ":" + (minute + 1));
                     }
-
                 };
                 newFragment.show(getFragmentManager(), "timePicker");
             }
@@ -194,9 +135,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
-
-
-
 
     private void initSwipe() {
         Toast.makeText(getApplicationContext(), "hy", Toast.LENGTH_LONG);
@@ -226,15 +164,6 @@ public class MainActivity extends AppCompatActivity {
                     View itemView = viewHolder.itemView;
                     float height = (float) itemView.getBottom() - (float) itemView.getTop();
                     float width = height / 3;
-
-                    /*if (dX > 0) {
-                        p.setColor(Color.parseColor("#388E3C"));
-                        RectF background = new RectF((float) itemView.getLeft(), (float) itemView.getTop(), dX, (float) itemView.getBottom());
-                        c.drawRect(background, p);
-                        icon = BitmapFactory.decodeResource(getResources(), R.drawable.calendar);
-                        RectF icon_dest = new RectF((float) itemView.getLeft() + width, (float) itemView.getTop() + width, (float) itemView.getLeft() + 2 * width, (float) itemView.getBottom() - width);
-                        c.drawBitmap(icon, null, icon_dest, p);
-                    }*/
                     if(dX<=0) {
                         p.setColor(Color.parseColor("#4CAF50"));
                         RectF background = new RectF((float) itemView.getRight() + dX, (float) itemView.getTop(),(float) itemView.getRight(), (float) itemView.getBottom());
@@ -251,87 +180,7 @@ public class MainActivity extends AppCompatActivity {
         itemTouchHelper.attachToRecyclerView(rv);
     }
 
-
-    private void save(String Date,String Time, String Title, String Details)
-    {
-        DBAdapter db=new DBAdapter(this);
-        //OPEN DB
-        db.openDB();
-        //COMMIT
-        long result=db.add(Date,Time,Title,Details);
-        if(result>0)
-        {
-            date.setText("");
-            time.setText("");
-            title.setText("");
-            details.setText("");
-        }else
-        {
-            Snackbar.make(title,"Unable To Save",Snackbar.LENGTH_SHORT).show();
-        }
-        db.closeDB();
-        //REFRESH
-        retrieve();
-    }
-
-
-    private void retrieve()
-    {
-        newtodos.clear();
-        DBAdapter db=new DBAdapter(this);
-        db.openDB();
-        //RETRIEVE
-        Cursor c=db.getAllItems();
-        //LOOP AND ADD TO ARRAYLIST
-        while (c.moveToNext())
-        {
-            int id=c.getInt(0);
-            String date=c.getString(1);
-            String time=c.getString(2);
-            String title = c.getString(3);
-            String details = c.getString(4);
-            NewTodo p=new NewTodo(id,date,time,title,details);
-            //ADD TO ARRAYLIS
-            newtodos.add(p);
-        }
-        //CHECK IF ARRAYLIST ISNT EMPTY
-        if(!(newtodos.size()<1))
-        {
-            rv.setAdapter(adapter);
-        }
-        db.closeDB();;
-    }
-
-
-
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        else if(id == R.id.add_new){
-            showDialog();
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
-    public static class DatePickerDialogClass extends DialogFragment implements DatePickerDialog.OnDateSetListener{
+        public static class DatePickerDialogClass extends DialogFragment implements DatePickerDialog.OnDateSetListener{
 
         @Override
         public Dialog onCreateDialog(Bundle savedInstanceState){
@@ -352,22 +201,65 @@ public class MainActivity extends AppCompatActivity {
 
     public static class TimePickerFragment extends DialogFragment
             implements TimePickerDialog.OnTimeSetListener {
-
         @Override
         public Dialog onCreateDialog(Bundle savedInstanceState) {
-            // Use the current time as the default values for the picker
             final Calendar c = Calendar.getInstance();
             int hour = c.get(Calendar.HOUR_OF_DAY);
             int minute = c.get(Calendar.MINUTE);
-
-            // Create a new instance of TimePickerDialog and return it
             return new TimePickerDialog(getActivity(), this, hour, minute,
                     DateFormat.is24HourFormat(getActivity()));
         }
-
         public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
         }
     }
-
-
+    private void save(String Date,String Time, String Title, String Details)
+    {
+        DBAdapter db=new DBAdapter(this);
+        db.openDB();
+        long result=db.add(Date,Time,Title,Details);
+        if(result>0)
+        {
+            date.setText("");
+            time.setText("");
+            title.setText("");
+            details.setText("");
+        }else{Snackbar.make(title,"Unable To Save",Snackbar.LENGTH_SHORT).show();}
+        db.closeDB();
+        retrieve();
+    }
+    private void retrieve(){
+        newtodos.clear();
+        DBAdapter db=new DBAdapter(this);
+        db.openDB();
+        Cursor c=db.getAllItems();
+        while(c.moveToNext()){
+            int id=c.getInt(0);
+            String date=c.getString(1);
+            String time=c.getString(2);
+            String title = c.getString(3);
+            String details = c.getString(4);
+            NewTodo p=new NewTodo(id,date,time,title,details);
+            newtodos.add(p);
+        }
+        if(!(newtodos.size()<1)){
+            rv.setAdapter(adapter);
+        }
+        db.closeDB();;
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.action_settings) {
+            return true;
+        }
+        else if(id == R.id.add_new){
+            showDialog();
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }
