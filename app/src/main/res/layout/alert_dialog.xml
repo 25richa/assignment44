@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:id="@+id/dateText"
+        android:layout_marginLeft="63dp"
+        android:layout_below="@+id/textView"
+        android:layout_toEndOf="@+id/calendar"
+        android:layout_marginStart="31dp" />
+
+    <ImageView
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:id="@+id/calendar"
+        android:src="@drawable/calendar"
+        android:layout_marginLeft="30dp"
+        android:layout_marginStart="68dp"
+        android:layout_below="@+id/textView"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Date"
+        android:id="@+id/textView"
+        android:layout_marginTop="47dp"
+        android:layout_below="@+id/textView5"
+        android:layout_alignStart="@+id/dateText" />
+
+    <View
+        android:layout_width="200dp"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"
+        android:id="@+id/view"
+        android:layout_below="@+id/dateText"
+        android:layout_alignStart="@+id/calendar" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Time"
+        android:id="@+id/textView2"
+        android:layout_below="@+id/view"
+        android:layout_alignStart="@+id/dateText"
+        android:layout_marginTop="20dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:id="@+id/timeText"
+        android:layout_below="@+id/textView2"
+        android:layout_alignStart="@+id/textView2"
+        android:layout_alignEnd="@+id/view1" />
+
+    <View
+        android:layout_width="200dp"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"
+        android:id="@+id/view1"
+        android:layout_alignStart="@+id/view"
+        android:layout_below="@+id/timeText" />
+
+    <ImageView
+        android:layout_width="22dp"
+        android:layout_height="22dp"
+        android:id="@+id/clockImage"
+        android:src="@drawable/clock1"
+        android:layout_marginLeft="0dp"
+        android:layout_below="@+id/textView2"
+        android:layout_alignStart="@+id/view1" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Title"
+        android:id="@+id/textView3"
+        android:layout_marginTop="15dp"
+        android:layout_below="@+id/view1"
+        android:layout_alignStart="@+id/timeText" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/titleText"
+        android:background="@android:color/transparent"
+        android:textColor="@android:color/darker_gray"
+        android:cursorVisible="false"
+        android:layout_alignStart="@+id/textView3"
+        android:layout_alignEnd="@+id/view2"
+        android:layout_below="@+id/textView3" />
+
+
+    <View
+        android:layout_width="200dp"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"
+        android:id="@+id/view2"
+        android:layout_below="@+id/titleText"
+        android:layout_alignStart="@+id/view1" />
+
+
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Details"
+        android:id="@+id/textView4"
+        android:layout_below="@+id/view2"
+        android:layout_alignStart="@+id/titleText"
+        android:layout_marginTop="20dp" />
+
+    <ImageView
+        android:layout_width="22dp"
+        android:layout_height="22dp"
+        android:id="@+id/list"
+        android:src="@drawable/list"
+        android:layout_above="@+id/view4"
+        android:layout_alignStart="@+id/view4" />
+
+
+
+   <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/detailsText"
+       android:cursorVisible="false"
+       android:textColor="@android:color/darker_gray"
+       android:background="@android:color/transparent"
+       android:layout_below="@+id/textView4"
+       android:layout_alignStart="@+id/textView4"
+       android:layout_alignEnd="@+id/view2" />
+
+    <View
+        android:layout_width="200dp"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"
+        android:id="@+id/view4"
+        android:layout_below="@+id/detailsText"
+        android:layout_alignEnd="@+id/detailsText" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="To Do"
+        android:textSize="25dp"
+        android:gravity="center"
+        android:background="@color/purple"
+        android:textColor="@android:color/white"
+        android:id="@+id/textView5"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add"
+        android:id="@+id/buttonAdd"
+        android:background="@color/purple_new"
+        android:textColor="@android:color/white"
+        android:layout_marginTop="48dp"
+        android:layout_below="@+id/view4"
+        android:layout_alignStart="@+id/view4"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:layout_alignEnd="@+id/detailsText" />
+
+</RelativeLayout>
